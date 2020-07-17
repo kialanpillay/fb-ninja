@@ -37,9 +37,17 @@ public class Strings{
         return str.toString();
     }
 
+    static String deletechars(String s, String remove){
+        StringBuilder str = new StringBuilder("[");
+        str.append(remove);
+        str.append("]");
+        return s.replaceAll(str.toString(), "");
+    }
+
     public static void main(String[]args){
         System.out.println(int2str(-30));
         System.out.println(str2int("-30"));
         System.out.println(longestrun("abccccddef"));
+        System.out.println(deletechars("abccccddef", "abc"));
     }
 }
