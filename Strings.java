@@ -1,5 +1,9 @@
 public class Strings{
 
+    static String int2str(int i){
+        return Integer.toString(i);
+    }
+
     static int str2int(String s){
         return Integer.parseInt(s);
     }
@@ -34,6 +38,7 @@ public class Strings{
     }
 
     public static void main(String[]args){
+        System.out.println(int2str(-30));
         System.out.println(str2int("-30"));
         System.out.println(longestrun("abccccddef"));
     }
