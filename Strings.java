@@ -1,25 +1,39 @@
+
+
 public class Strings{
 
-    static String int2str(int i){
+    static String int2str(int input){
+        if(input == null){
+            throw new Exception("The input cannot be null");
+        }
         return Integer.toString(i);
     }
 
-    static int str2int(String s){
-        return Integer.parseInt(s);
+    static int str2int(String input){
+        if(input == null){
+            throw new Exception("The input cannot be null");
+        }
+        if(input.length() == 0){
+            throw new Exception("The input cannot be empty");
+        }
+        return Integer.parseInt(input);
     }
 
-    static String longestrun(String s){
-        if(s.length() == 0){
+    static String longestrun(String input){
+        if(input == null){
+            throw new Exception("The input cannot be null");
+        }
+        if(input.length() == 0){
             return "";
         }
-        char current_letter = s.charAt(0);
-        char max_letter = s.charAt(0);
+        char current_letter = input.charAt(0);
+        char max_letter = input.charAt(0);
         int run = 0; 
         int max = 0;
-        for (int i = 1; i < s.length(); i++){
-            if(s.charAt(i)!=current_letter){
+        for (int i = 1; i < input.length(); i++){
+            if(input.charAt(i)!=current_letter){
                 run = 1;
-                current_letter = s.charAt(i);
+                current_letter = input.charAt(i);
             }
             else{
                 run++;
@@ -37,11 +51,17 @@ public class Strings{
         return str.toString();
     }
 
-    static String deletechars(String s, String remove){
+    static String deletechars(String input, String remove){
+        if(input == null || remove == null){
+            throw new Exception("The input parameters cannot be null");
+        }
+        if(remove.length() == 0 || input.length() == 0){
+            return input
+        }
         StringBuilder str = new StringBuilder("[");
         str.append(remove);
         str.append("]");
-        return s.replaceAll(str.toString(), "");
+        return input.replaceAll(str.toString(), "");
     }
 
     public static void main(String[]args){
