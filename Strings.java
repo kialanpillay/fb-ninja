@@ -92,6 +92,35 @@ public class Strings{
         return new String(temp);
     }
 
+    static boolean isrotation(String s1, String s2)
+    {
+        if(s1 == null || s1 == null){
+            throw new RuntimeException();
+        }
+
+        if(s1.isEmpty() && s2.isEmpty()){
+            return true;
+        }
+
+        if(s1.length() != s2.length()){
+            return false;
+        }
+
+        String test = s2;
+
+        for(int index = 0; index < s1.length(); index++){
+          char c = test.chartAt(0);
+          StringBuilder str = new StringBuilder(test.substring(1, test.length()));
+          str.append(c);
+          test = str.toString();
+
+          if(test.equals(s1)){
+            return true;
+          }
+        }
+        return false;
+    }
+
     public static void main(String[]args){
         System.out.println(int2str(-30));
         System.out.println(str2int("-30"));
