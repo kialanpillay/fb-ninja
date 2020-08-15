@@ -28,7 +28,7 @@ public class Strings{
         }
         char current_letter = input.charAt(0);
         char max_letter = input.charAt(0);
-        int run = 0; 
+        int run = 0;
         int max = 0;
         for (int i = 1; i < input.length(); i++){
             if(input.charAt(i)!=current_letter){
@@ -56,12 +56,40 @@ public class Strings{
             throw new Exception("The input parameters cannot be null");
         }
         if(remove.length() == 0 || input.length() == 0){
-            return input
+            return input;
         }
         StringBuilder str = new StringBuilder("[");
         str.append(remove);
         str.append("]");
         return input.replaceAll(str.toString(), "");
+    }
+
+    static boolean anagram(String s1, String s2){
+      if(s1 == null || s1 == null){
+          throw new RuntimeException();
+      }
+
+      if(s1.isEmpty() && s2.isEmpty()){
+          return true;
+      }
+
+      if(s1.length() != s2.length()){
+          return false;
+      }
+
+      if(sortString(s1).equals(sortString(s2))){
+        return true;
+      }
+      else{
+        return false;
+      }
+    }
+
+    static String sortString(String input)
+    {
+        char[]temp = input.toCharArray();
+        Arrays.sort(temp);
+        return new String(temp);
     }
 
     public static void main(String[]args){
