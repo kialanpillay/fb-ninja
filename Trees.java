@@ -70,6 +70,24 @@ public class Trees{
         }
     }
 
+    static void printLeaves(Node root){
+        //base case if tree is empty
+        if (root == null){
+            throw new RuntimeException();
+        }
+        //base case if node is a leaf
+        if (root.left == null && root.right == null){
+            System.out.println(root.data)
+        }
+        //recursively call function on each subtree if child exists
+        if (root.left != null){
+          printLeaves(root.left);
+        }
+        if (root.right != null){
+          printLeaves(root.right);
+        }
+    }
+
     public static void main(String[]args){
 
     }
