@@ -53,6 +53,23 @@ public class Trees{
         return res;
     }
 
+    static int height(Node root){
+        //base case if tree is empty
+        if (root == null){
+            return 0;
+        }
+        //recursively call function on each subtree
+        int leftHeight = maxDepth(root.left);
+        int rightHeight = maxDepth(root.right);
+
+        if (leftHeight > rightHeight){
+          return leftHeight + 1; //include root node
+        }
+        else{
+          return rightDepth + 1;  //include root node
+        }
+    }
+
     public static void main(String[]args){
 
     }
