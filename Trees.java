@@ -59,15 +59,24 @@ public class Trees{
             return 0;
         }
         //recursively call function on each subtree
-        int leftHeight = maxDepth(root.left);
-        int rightHeight = maxDepth(root.right);
+        //and return the maximum of the returned values, including the root
+        return 1 + Math.max(height(root.left), height(root.right));
+    }
 
-        if (leftHeight > rightHeight){
-          return leftHeight + 1; //include root node
+    static boolean isBalanced(Node root){
+        //base case if tree is empty, then tree is trivially balanced
+        if (root == null){
+            return true;
         }
-        else{
-          return rightDepth + 1;  //include root node
+        //if heights of left and right subtrees differ by less than 2
+        //and each recursive subtree is balanced, return true
+        if (Math.abs(height(root.left) - height(root.right)) < 2 &&
+            isBalanced(root.left) &&
+            isBalanced(root.right))
+        {
+            return true;
         }
+        return false;
     }
 
     static void printLeaves(Node root){
@@ -77,7 +86,8 @@ public class Trees{
         }
         //base case if node is a leaf
         if (root.left == null && root.right == null){
-            System.out.println(root.data)
+            //print the data to console
+            System.out.println(root.data);
         }
         //recursively call function on each subtree if child exists
         if (root.left != null){
