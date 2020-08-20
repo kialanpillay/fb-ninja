@@ -39,6 +39,20 @@ public class Trees{
         return s1.equals(s2);
     }
 
+    static int countElements(Node root){
+        if (root == null){
+          return 0;  //base case if tree is empty
+        }
+        int count = 0; //initialise count variable for sub-tree
+        //if node has children, increment
+        if (root.left != null && root.right != null){
+          count++;
+        }
+        //increment count by count of sub-trees recursively
+        count += (countElements(root.left) + countElements(root.right));
+        return res;
+    }
+
     public static void main(String[]args){
 
     }
